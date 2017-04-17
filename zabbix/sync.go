@@ -37,7 +37,7 @@ func NewZabbixSynchronizer(k8s *kubernetes.Clientset) (*ZabbixSynchronizer, erro
 	}, nil
 }
 
-// SyncZabbix synchronizes Openshift namespaces and Zabbix items in background every 5 minutes
+// Sync synchronizes Openshift namespaces and Zabbix
 func (zs *ZabbixSynchronizer) Sync() {
 	nsList, err := zs.k8s.Core().Namespaces().List(v1.ListOptions{})
 	if err != nil {
@@ -60,7 +60,7 @@ func match(patterns []string, candidate string) bool {
 	return false
 }
 
-// SyncZabbix synchronizes Openshift namespaces and Zabbix items in background every 5 minutes
+// Start synchronizes Openshift namespaces and Zabbix items in background every 5 minutes
 func (zs *ZabbixSynchronizer) Start() {
 	ticker := time.NewTicker(5 * time.Minute)
 	quit := make(chan struct{})
