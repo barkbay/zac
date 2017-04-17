@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: zac
+spec:
+  host: zac.corp.my
+  to:
+    kind: Service
+    name: zac
+    weight: 100
+  wildcardPolicy: None
