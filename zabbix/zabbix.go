@@ -71,6 +71,7 @@ func (z *Zabbix) NewOrUpdateMonitoring(namespace string) {
 			createRes, createErr := z.api.Call("httptest.create", zabbix.Params{
 				"name":   scenario,
 				"hostid": zbxSrv.HostId,
+				"delay":  10,
 				"steps":  steps,
 				"output": "shorten"})
 			if createErr != nil {
@@ -85,6 +86,7 @@ func (z *Zabbix) NewOrUpdateMonitoring(namespace string) {
 				"name":       scenario,
 				"httptestid": httptestid,
 				"hostid":     zbxSrv.HostId,
+				"delay":      10,
 				"steps":      steps,
 				"output":     "shorten"})
 			if updateErr != nil {
