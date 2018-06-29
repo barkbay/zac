@@ -87,3 +87,8 @@ func (w *WarningRates) GetWarningRate(namespace string) (*WarningData, bool) {
 	}
 	return nil, false
 }
+
+// GetWarningRate get the current rate for a project
+func (w *WarningRates) GetAllWarningRate() (map[string]WarningData) {
+	return w.counters
+}
