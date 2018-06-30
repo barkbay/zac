@@ -49,7 +49,7 @@ func (s *HttpServer) prometheus(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("# HELP kubernetes.events Gauge for events in namespaces\n"))
 	w.Write([]byte("# TYPE kubernetes.events gauge\n"))
 	for k, v := range s.warningRates.GetAllWarningRate() {
-		line := fmt.Sprintf("kubernetes.events{type=\"warning\", namespace=\"%s\"} %d\n", k, v.RateCounter.Rate())
+		line := fmt.Sprintf("kubernetes_events{type=\"warning\", namespace=\"%s\"} %d\n", k, v.RateCounter.Rate())
 		w.Write([]byte(line))
 	}
 }
